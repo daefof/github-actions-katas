@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
-      - name: Clone-down
+      - name: Clone
         uses: actions/checkout@v3 
-      - name: Run
+      - name: Run Grade
         run: chmod +x ci/build-app.sh && ci/build-app.sh
       - name: Test
         run: ci/unit-test-app.sh
