@@ -5,9 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
-      - name: Clone
+      - name: Checkout repository
         uses: actions/checkout@v3 
-      - name: Run Grade
+      - name: Build application 
         run: chmod +x ci/build-app.sh && ci/build-app.sh
-      - name: Test
-        run: ci/unit-test-app.sh
+      - name: Test application
+        run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
+      - name: Upload repository
+        uses: actions/upload-artifact@v3
+        with: 
+          name: code
+          path: .
